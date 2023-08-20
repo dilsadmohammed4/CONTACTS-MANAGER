@@ -1,0 +1,35 @@
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.spinner {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.spinner img {
+    display: block;
+    margin: 10% auto;
+}
+
+.landing {
+    background: white url("asset/image/contacts.jpg") no-repeat scroll center;
+    background-size: cover;
+    height: 100vh;
+    color: white;
+}
+
+.wrapper {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+}

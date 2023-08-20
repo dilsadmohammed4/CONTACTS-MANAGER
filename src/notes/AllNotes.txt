@@ -1,0 +1,53 @@
+useEffect()
+------------
+Side-effect ->  React Server
+
+Component did mount.
+useEffect(() =>{
+    // logic
+},[])
+
+--> Component is fully rendered. After it will execute.
+Call will happen when component will fully rendered in Dom.
+
+Suppose sometimes we need to connect with server then 1st component will render in DOM then useEffet() is call at last.
+
+Component will update
+const [count, setCount] = useState(0);
+
+useEffect(() =>{
+    // logic
+},[])
+
+Component did un-mount.
+useEffect(() =>{
+    // logic
+    return () =>{
+        // logic- when the component is destroyed from DOM
+    }
+},[])
+
+
+useState; to hold data we use this
+useEffect: to fetch data we use this
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
