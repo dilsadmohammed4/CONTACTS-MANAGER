@@ -6,6 +6,7 @@ import contactRouter from "./router/contactRouter";
 import groupRouter from "./router/groupRouter";
 import userRouter from "./router/userRouter";
 import {config} from "./config/config";
+import { DBUtil } from "./db/DBUtil";
 
 const app: Application = express();
 
@@ -14,8 +15,9 @@ dotenv.config({
     path: "./.env"
 })
 
-const hostName: string | undefined = process.env.SERVER_HOST_NAME;
-const port: string | undefined = process.env.SERVER_PORT_NAME;
+const port: number | undefined = Number(process.env.SERVER_PORT_NAME) || 9000;
+const dbUrl: string | undefined = process.env.MONGO_DB_CLOUD_URL;
+const dbName: string | undefined = process.env.MONGO_DB_DATABASE;
 
 //configure express to read the form data / body
 app.use(express.json());
@@ -34,17 +36,21 @@ app.use("/contacts", contactRouter);
 app.use("/groups", groupRouter);
 app.use("/users", userRouter);
 
-mongoose
-    .connect(config.mongo.url, {retryWrites: true, w: 'majority'})
-    .then(() => {
-        console.log('Mongo connected successfully.');
-        if (hostName && port) {
-            app.listen(Number(port), hostName, () => {
-                console.log(`Server started on Host ${hostName}:${port}`)
-            })
+if (port && dbUrl && dbName) {
+    app.listen(port, () => {
+        if (dbUrl && dbName) {
+            DBUtil.connectToDb(dbUrl, dbName)
+                .then((dbResponse) => {
+                    console.log(dbResponse);
+                })
+                .catch((error) => {
+                    console.error(error);
+                    process.exit(0);
+                });
         }
-    }).catch((error) => console.error(error));
-
+        console.log(`Server started at ${port}`);
+    });
+}
 
 
 

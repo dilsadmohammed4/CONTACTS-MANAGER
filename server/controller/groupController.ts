@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
 import {APP_STATUS} from "../constant/constant";
 import {validationResult} from "express-validator";
-import GroupTable from "../database/groupsScema";
+import GroupTable from "../database/groupsSchema";
 import {IGroup} from "../model/IGroup";
 import mongoose from "mongoose";
 

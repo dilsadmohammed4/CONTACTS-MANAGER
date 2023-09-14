@@ -4,7 +4,7 @@ import {validationResult} from "express-validator";
 import bcryptjs from "bcryptjs";
 import gravatar from "gravatar";
 import jwt from "jsonwebtoken";
-import UserTable from "../database/userScema";
+import UserTable from "../database/userSchema";
 import {IUser} from "../model/IUser";
 import mongoose from "mongoose";
 

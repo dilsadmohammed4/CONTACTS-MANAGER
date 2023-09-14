@@ -1,11 +1,11 @@
 import {Request, Response} from "express";
 import {APP_STATUS} from "../constant/constant";
 import {validationResult} from "express-validator";
-import ContactTable from "../database/contactScema";
+import ContactTable from "../database/contactSchema";
 import {IContact} from "../model/IContact";
 import mongoose from "mongoose";
 import {IUser} from "../model/IUser";
-import UserTable from "../database/userScema";
+import UserTable from "../database/userSchema";
 
 export const getAllContacts = async (request: Request, response: Response) => {
     try {
