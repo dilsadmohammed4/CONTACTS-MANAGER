@@ -78,7 +78,6 @@ export const userSlice = createSlice({
             state.loading = false;
             state.user = action.payload.data;
             state.isAuthenticated = true;
-            ToastUtils.displaySuccessToast("User details fetched!")
         }).addCase(userAction.getUserInfoAction.rejected, (state, action) => {
             state.loading = false;
             state.user = {} as IUserView;
