@@ -43,7 +43,7 @@ export const registerAUser = async (request: Request, response: Response) => {
         //save to db
 
         const newUser: IUser = {
-            email: email,
+            email: email.toLowerCase(),
             imageUrl: imageUrl,
             isAdmin: false,
             password: hashPassword,
@@ -81,7 +81,7 @@ export const loginUser = async (request: Request, response: Response) => {
         let {email, password} = request.body;
 
         //check email exits
-        const userObj: IUser | undefined | null = await UserTable.findOne({email: email});
+        const userObj: IUser | undefined | null = await UserTable.findOne({email: email.toLowerCase()});
         if (!userObj) {
             return response.status(500).json({
                 status: APP_STATUS.FAILED,
